@@ -56,3 +56,54 @@ Core packages:
 - Sentence transformers for embeddings
 - Background document processing
 - Session-based progress tracking
+
+---
+
+Deployment Status & LLM Constraints
+
+The application has been successfully deployed on Streamlit, and the full PDF upload, processing, vectorization, and chat UI workflow is functional within the Streamlit environment.
+
+However, the current implementation uses an Ollama-based local LLM, which cannot run on Streamlit’s hosted servers due to the following limitations:
+
+Streamlit Cloud does not support local model execution
+
+Ollama requires local GPU/CPU access and background services
+
+Long-running local inference processes are restricted in hosted environments
+
+
+✅ What Works on Streamlit
+
+PDF upload and ingestion
+
+Chunking and embedding generation
+
+FAISS vector store creation
+
+Query retrieval pipeline
+
+UI, session handling, and citations logic
+
+
+⚠️ What Is Limited
+
+LLM inference using Ollama is not available on Streamlit Cloud
+
+
+🚀 How to Enable Full Functionality
+
+If cloud-based LLM API keys are provided (e.g., OpenAI, Azure OpenAI, Anthropic, Cohere, etc.), the same RAG pipeline can be seamlessly switched to a cloud LLM, allowing:
+
+End-to-end question answering
+
+Live responses with source citations
+
+Fully functional hosted demo on Streamlit
+
+
+🔁 Architecture Flexibility
+
+The system is designed with LLM abstraction, so replacing Ollama with a cloud LLM requires minimal code changes—only the LLM client configuration.
+
+
+---
